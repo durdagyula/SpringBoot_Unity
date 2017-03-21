@@ -30,4 +30,16 @@ public class AccountController {
         accountRepository.save(account);
         return accountRepository.findAll();
     }
+
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public boolean validate(@RequestBody Account account) {
+        List<Account> accounts = accountRepository.findAll();
+        for (int i=0; i<accounts.size(); i++){
+
+            if(accounts.get(i).getUsername().equals(account.getUsername()) && accounts.get(i).getPassword().equals(account.getPassword())){
+                return true;
+            }
+        }
+        return false;
+    }
 }
