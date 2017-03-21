@@ -18,12 +18,12 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception{
-        List<Account> accounts = new ArrayList<Account>();
+        //List<Account> accounts = new ArrayList<Account>();
 
-        accounts.add(new Account("Unity","Unity"));
-        accounts.add(new Account("Unity1","Unity1"));
+        //accounts.add(new Account("Unity","Unity"));
+        //accounts.add(new Account("Unity1","Unity1"));
 
-        accountRepository.save(accounts);
+        //accountRepository.save(accounts);
 
     }
 }

@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-</head>
-<body>
-<div class="container">
-    <div class="jumbotron">
-        <div ng-app="">
-            <p>Input something in the input box:</p>
-            <p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
-            <h1>Hello {{name}}</h1>
+<html lang="en" ng-app="app">
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/main.controller.js"></script>
+    </head>
+    <body>
+
+        <div class="page">
+            <header>
+            </header>
+
+
+            <div class="main">
+                <ng-view></ng-view>
+            </div>
+
+            <footer>
+            </footer>
 
         </div>
-    </div>
-</div>
-</body>
+
+    </body>
 </html>
