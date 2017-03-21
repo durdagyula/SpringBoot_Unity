@@ -12,6 +12,8 @@ import java.util.List;
 
 @RestController
 public class AccountController {
+    private Account CurrentUser;
+
     @Autowired
     private AccountRepository accountRepository;
 
@@ -35,11 +37,20 @@ public class AccountController {
     public boolean validate(@RequestBody Account account) {
         List<Account> accounts = accountRepository.findAll();
         for (int i=0; i<accounts.size(); i++){
-
             if(accounts.get(i).getUsername().equals(account.getUsername()) && accounts.get(i).getPassword().equals(account.getPassword())){
+                this.setCurrentUser(accounts.get(i));
                 return true;
             }
         }
         return false;
+    }
+
+    @RequestMapping(value = "getCurrentUser", method = RequestMethod.GET)
+    public Account getCurrentUser() {
+        return CurrentUser;
+    }
+
+    public void setCurrentUser(Account currentUser) {
+        CurrentUser = currentUser;
     }
 }

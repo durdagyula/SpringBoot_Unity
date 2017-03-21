@@ -10,13 +10,13 @@
                         <form name="loginForm" id="loginForm" novalidate>
                             <div class="form-group" ng-class="{ 'has-error' : loginForm.email.$invalid && loginForm.email.$touched}">
                                 <label for="email" class="control-label">Username</label>
-                                <input type="email" class="form-control" id="email" name="email" ng-model="user.email" required title="Please enter you username" placeholder="example@gmail.com">
+                                <input type="email" class="form-control" id="email" name="email" ng-model="email" required title="Please enter you username" placeholder="example@gmail.com">
                                 <p id="emailErrorMsg" ng-show="loginForm.email.$invalid && loginForm.email.$touched" class="help-block">Enter a valid email.</p>
                                 <span class="help-block"></span>
                             </div>
                             <div class="form-group" show-errors>
                                 <label for="password" class="control-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" ng-model="user.password" required title="Please enter your password">
+                                <input type="password" class="form-control" id="password" name="password" ng-model="password" required title="Please enter your password">
                                 <span class="help-block"></span>
                             </div>
                             <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>

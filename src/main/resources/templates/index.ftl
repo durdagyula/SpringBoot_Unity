@@ -10,6 +10,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/main.controller.js"></script>
+        <script src="js/login.controller.js"></script>
     </head>
     <body>
 

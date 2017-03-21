@@ -1,6 +1,6 @@
 var app = angular.module("app");
 
-app.controller("MainController", ["$scope", "$http", function($scope, $http) {
+app.controller("MainController", ["$scope", "$http", function MainController($scope, $http) {
 
     //$http.get("listAccounts").then(function (response) {
     //    alert(response.data);
