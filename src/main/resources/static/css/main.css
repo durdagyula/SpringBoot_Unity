@@ -2,3 +2,16 @@
     font-size: small;
     padding-left: 2%;
 }
+
+.glyphicon-ok{
+    padding-left: 20px;
+}
+
+#promo{
+    vertical-align: middle;
+}
+
+#login-overlay{
+    min-height: 370px;
+    min-width: 600px;
+}

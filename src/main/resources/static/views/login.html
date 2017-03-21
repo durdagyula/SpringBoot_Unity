@@ -19,25 +19,17 @@
                                 <input type="password" class="form-control" id="password" name="password" ng-model="password" required title="Please enter your password">
                                 <span class="help-block"></span>
                             </div>
-                            <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
-                            <!--div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="remember" id="remember"> Remember login
-                                </label>
-                                <p class="help-block">(if this is a private computer)</p>
-                            </div-->
                             <button class="btn btn-success btn-block" ng-disabled="loginForm.$invalid" ng-click="login()">Login</button>
                             <button class="btn btn-default btn-block" ng-click="reset()">Forgot password?</button>
                         </form>
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div id="promo" class="col-xs-6">
                     <p class="lead">Register now for <span class="text-success">FREE</span></p>
                     <ul class="list-unstyled" style="line-height: 2">
                         <li><span class="glyphicon glyphicon-ok text-success"></span> Save all your items</li>
                         <li><span class="glyphicon glyphicon-ok text-success"></span> Browse from your Scans</li>
                         <li><span class="glyphicon glyphicon-ok text-success"></span> Share your favorites</li>
-                        <li><a href="/SpringBoot/#!/login/"><u>Read more</u></a></li>
                     </ul>
                     <p><a href="/SpringBoot/#!/login/" class="btn btn-info btn-block">Register now!</a></p>
                 </div>

@@ -1,6 +1,6 @@
 var app = angular.module("app");
 
-app.controller("LoginController", ["$scope", "$http", function LoginController($scope, $http) {
+app.controller("LoginController", ["$scope", "$http", "$location", function LoginController($scope, $http, $location) {
 
     $scope.email="";
     $scope.password="";
@@ -12,6 +12,7 @@ app.controller("LoginController", ["$scope", "$http", function LoginController($
         $http.post("login", { username:$scope.email, password:$scope.password } ).then(function (response) {
             if(response.data){
                 alert("login success");
+                $location.path("/main");
             }else{
                 alert("wrong pass or user");
             }

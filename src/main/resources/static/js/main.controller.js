@@ -1,6 +1,12 @@
 var app = angular.module("app");
 
-app.controller("MainController", ["$scope", "$http", function MainController($scope, $http) {
+app.controller("MainController", ["$scope", "$http", "$location", function MainController($scope, $http, $location) {
+
+    $http.get("getCurrentUser").then(function (response) {
+        if(!response.data){
+            $location.path("/");
+        }
+    });
 
     //$http.get("listAccounts").then(function (response) {
     //    alert(response.data);
