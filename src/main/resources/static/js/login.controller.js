@@ -1,6 +1,6 @@
 var app = angular.module("app");
 
-app.controller("MainController", ["$scope", "$http", function($scope, $http) {
+app.controller("LoginController", function($scope) {
 
     //$http.get("listAccounts").then(function (response) {
     //    alert(response.data);
@@ -16,4 +16,4 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
 
 
 
-}]);
+});
