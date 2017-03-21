@@ -8,4 +8,7 @@ app.config(function($routeProvider) {
         .when("/london", {
             templateUrl : "views/london.html"
         })
+        .when("/login", {
+            templateUrl: "views/login.html"
+        })
 });
