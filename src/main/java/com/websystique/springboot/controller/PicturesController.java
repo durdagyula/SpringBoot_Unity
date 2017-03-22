@@ -18,6 +18,7 @@ public class PicturesController {
     private PicturesRepository picturesRepository;
     @Autowired
     private AccountRepository accountRepository;
+    private AccountController accountController;
 
     @Autowired
     public PicturesController(AccountRepository accountRepository,PicturesRepository picturesRepository){
@@ -30,7 +31,7 @@ public class PicturesController {
         return picturesRepository.findAll();
     }
 
-    @RequestMapping(value = "/addPicture/{title}/{url}")
+    @RequestMapping(value = "addPicture/{title}/{url}")
     public void addPicture(@PathVariable("title") String title,  @PathVariable("url") String url){
         LocalDate now = LocalDate.now();
         String date = now.format(DateTimeFormatter.ISO_LOCAL_DATE).toString();
@@ -38,7 +39,25 @@ public class PicturesController {
         picture.setUploadDate(date);
         picture.setTitle(title);
         picture.setURL(url.replaceAll("@",".").replaceAll("_","/"));
+        //change after validation!
+        picture.setUserId(2);
         picturesRepository.save(picture);
+    }
+
+    @RequestMapping(value = "getUserPictures/{userId}", method = RequestMethod.POST)
+    public List<Picture> getUserPictures(@PathVariable("userId") long userId) {
+        return getCurrentUserPictures(userId);
+    }
+
+    //get user pictures
+    private List<Picture> getCurrentUserPictures(long userId) {
+        List<Picture> lp = picturesRepository.findAll();
+        for (int i=0; i<lp.size(); i++){
+            if(lp.get(i).getUserId() != userId){
+                lp.remove(i);
+            }
+        }
+        return lp;
     }
 
 }

@@ -1,12 +1,41 @@
-<div class="container" ng-controller="MainController">
-    <div class="jumbotron" ng-if="currentUser != null">
-        <div>
-            <p>MAIN</p>
-            <p>Input something in the input box:</p>
-            <p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
-            <h1>Hello {{name}}</h1>
-            <button ng-click="test()">Post</button>
+<div class="mainPage" ng-controller="MainController">
+    <div id="banner" class="jumbotron">
+        <div class="container">
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
+            <h2 class="col-xs-12">Gallery</h2>
+        </div><!-- /row -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <div class="list-group">
+                    <span href="#" class="list-group-item active">
+                        Scanned pictures
+                    </span>
+                    <a href="#" class="list-group-item">
+                        Translations
+                    </a>
+                    <a href="#" class="list-group-item">
+                        Barcodes
+                    </a>
+                    <a href="#" class="list-group-item">
+                        Settings
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-9">
+                <div class="row">
+                    <div ng-repeat="picture in pictures track by picture.id" class="col-xs-12 col-sm-4">
+                        <span class="pictureTitle">{{ picture.title }}</span>
+                        <a href="{{ picture.url }}" target="_blank" class="thumbnail">
+                            <img src="{{ picture.url }}">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

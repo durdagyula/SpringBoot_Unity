@@ -2,15 +2,16 @@
     font-size: small;
     padding-left: 2%;
 }
-
-.glyphicon-ok{
-    padding-left: 20px;
+#banner{
+    background-image: url('http://www.esri.com/~/media/Images/Banners/software/arcgis-open-data-banner-lg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
 }
-
 #promo{
     vertical-align: middle;
 }
-
 #login-overlay{
     min-height: 370px;
     min-width: 600px;
@@ -24,3 +25,11 @@
 .primary-text-color    { color: #212121; }
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
+.glyphicon-ok{
+    padding-left: 20px;
+}
+.pictureTitle{
+    vertical-align: middle;
+    font-size: larger;
+    font-weight: bolder;
+}
