@@ -1,6 +1,6 @@
 package com.websystique.springboot.controller;
 
-import com.websystique.springboot.persistence.Account;
+import com.websystique.springboot.model.Account;
 import com.websystique.springboot.persistence.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,17 +23,17 @@ public class AccountController {
     }
 
     @RequestMapping(value = "listAccounts", method = RequestMethod.GET)
-    public List<Account> getAll() {
+    public List<Account> listAccounts() {
         return accountRepository.findAll();
     }
 
     @RequestMapping(value = "createAccount", method = RequestMethod.POST)
-    public List<Account> create(@RequestBody Account account){
+    public List<Account> createAccount(@RequestBody Account account){
         accountRepository.save(account);
         return accountRepository.findAll();
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "validate", method = RequestMethod.POST)
     public boolean validate(@RequestBody Account account) {
         List<Account> accounts = accountRepository.findAll();
         for (int i=0; i<accounts.size(); i++){
