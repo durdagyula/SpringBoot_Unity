@@ -1,47 +1,36 @@
 package com.websystique.springboot.controller;
 
+import com.websystique.springboot.model.Account;
 import com.websystique.springboot.model.Picture;
 import com.websystique.springboot.persistence.AccountRepository;
 import com.websystique.springboot.persistence.PicturesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @RestController
 public class PicturesController {
 
     @Autowired
-    private PicturesRepository picturesRepository;
-    @Autowired
     private AccountRepository accountRepository;
-    private AccountController accountController;
 
     @Autowired
-    public PicturesController(AccountRepository accountRepository,PicturesRepository picturesRepository){
-        this.accountRepository = accountRepository;
+    private PicturesRepository picturesRepository;
+
+    @Autowired
+    public PicturesController(PicturesRepository picturesRepository) {
         this.picturesRepository = picturesRepository;
     }
 
-    @RequestMapping(value = "/listPictures", method = RequestMethod.GET)
+    @RequestMapping(value = "listPictures", method = RequestMethod.GET)
     public List<Picture> listPictures() {
         return picturesRepository.findAll();
     }
 
-    @RequestMapping(value = "addPicture/{title}/{url}")
-    public void addPicture(@PathVariable("title") String title,  @PathVariable("url") String url){
-        LocalDate now = LocalDate.now();
-        String date = now.format(DateTimeFormatter.ISO_LOCAL_DATE).toString();
-        Picture picture = new Picture();
-        picture.setUploadDate(date);
-        picture.setTitle(title);
-        picture.setURL(url.replaceAll("@",".").replaceAll("_","/"));
-        //change after validation!
-        picture.setUserId(2);
-        picturesRepository.save(picture);
+    @PostMapping("createPicture")
+    public void createPicture(Picture picture) {
+        picturesRepository.saveAndFlush(picture);
     }
 
     @RequestMapping(value = "getUserPictures/{userId}", method = RequestMethod.POST)
@@ -52,12 +41,22 @@ public class PicturesController {
     //get user pictures
     private List<Picture> getCurrentUserPictures(long userId) {
         List<Picture> lp = picturesRepository.findAll();
-        for (int i=0; i<lp.size(); i++){
-            if(lp.get(i).getUserId() != userId){
+        for (int i = 0; i < lp.size(); i++) {
+            if (lp.get(i).getUserId() != userId) {
                 lp.remove(i);
             }
         }
         return lp;
+    }
+
+    public long getTestUser() {
+        List<Account> accounts = accountRepository.findAll();
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getUsername() == "Unity1") {
+                return accounts.get(i).getId();
+            }
+        }
+        return 0;
     }
 
 }

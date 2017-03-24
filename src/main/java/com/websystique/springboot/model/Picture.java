@@ -17,20 +17,21 @@ public class Picture {
     private String URL;
     private String UploadDate;
 
-    public Picture(){};
+    public Picture() {
+    }
 
-    public Picture(String title, String url, String uploadDate){
+    public Picture(String title, String url, String uploadDate) {
         this.Title = title;
         this.URL = url;
         this.UploadDate = uploadDate;
-    };
+    }
 
-    public Picture(String title, String url, String uploadDate, long userId){
+    public Picture(String title, String url, String uploadDate, long userId) {
         this.Title = title;
         this.URL = url;
         this.UploadDate = uploadDate;
         this.userId = userId;
-    };
+    }
 
     public long getId() {
         return Id;

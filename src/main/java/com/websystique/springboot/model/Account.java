@@ -15,9 +15,10 @@ public class Account {
     private String Username;
     private String Password;
 
-    public Account(){}
+    public Account() {
+    }
 
-    public Account(String username, String password){
+    public Account(String username, String password) {
         this.Username = username;
         this.Password = password;
     }

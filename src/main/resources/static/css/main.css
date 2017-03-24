@@ -1,35 +1,68 @@
-#emailErrorMsg{
+#emailErrorMsg {
     font-size: small;
     padding-left: 2%;
 }
-#banner{
-    background-image: url('http://www.esri.com/~/media/Images/Banners/software/arcgis-open-data-banner-lg.jpg');
+
+#banner {
+    background-image: url("../images/banner.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 250px;
 }
-#promo{
+
+#promo {
     vertical-align: middle;
 }
-#login-overlay{
+
+#login-overlay {
     min-height: 370px;
     min-width: 600px;
 }
 
-.dark-primary-color    { background: #AFB42B; }
-.default-primary-color { background: #CDDC39; }
-.light-primary-color   { background: #F0F4C3; }
-.text-primary-color    { color: #212121; }
-.accent-color          { background: #448AFF; }
-.primary-text-color    { color: #212121; }
-.secondary-text-color  { color: #757575; }
-.divider-color         { border-color: #BDBDBD; }
-.glyphicon-ok{
+.dark-primary-color {
+    background: #AFB42B;
+}
+
+.default-primary-color {
+    background: #CDDC39;
+}
+
+.light-primary-color {
+    background: #F0F4C3;
+}
+
+.text-primary-color {
+    color: #212121;
+}
+
+.accent-color {
+    background: #448AFF;
+}
+
+.primary-text-color {
+    color: #212121;
+}
+
+.secondary-text-color {
+    color: #757575;
+}
+
+.divider-color {
+    border-color: #BDBDBD;
+}
+
+.glyphicon-ok {
     padding-left: 20px;
 }
-.pictureTitle{
+
+.pictureTitle {
     vertical-align: middle;
     font-size: larger;
     font-weight: bolder;
 }
+
+.card-media {
+    background-color: #999999;
+}
+

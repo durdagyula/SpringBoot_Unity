@@ -3,10 +3,7 @@ package com.websystique.springboot.controller;
 import com.websystique.springboot.model.Account;
 import com.websystique.springboot.persistence.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +15,7 @@ public class AccountController {
     private AccountRepository accountRepository;
 
     @Autowired
-    public AccountController(AccountRepository accountRepository){
+    public AccountController(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
@@ -28,7 +25,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "createAccount", method = RequestMethod.POST)
-    public List<Account> createAccount(@RequestBody Account account){
+    public List<Account> createAccount(@RequestBody Account account) {
         accountRepository.save(account);
         return accountRepository.findAll();
     }
@@ -36,8 +33,8 @@ public class AccountController {
     @RequestMapping(value = "validate", method = RequestMethod.POST)
     public boolean validate(@RequestBody Account account) {
         List<Account> accounts = accountRepository.findAll();
-        for (int i=0; i<accounts.size(); i++){
-            if(accounts.get(i).getUsername().equals(account.getUsername()) && accounts.get(i).getPassword().equals(account.getPassword())){
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getUsername().equals(account.getUsername()) && accounts.get(i).getPassword().equals(account.getPassword())) {
                 this.setCurrentUser(accounts.get(i));
                 return true;
             }
@@ -52,5 +49,16 @@ public class AccountController {
 
     public void setCurrentUser(Account currentUser) {
         CurrentUser = currentUser;
+    }
+
+    @GetMapping("getTestUser")
+    public long getTestUser() {
+        List<Account> accounts = accountRepository.findAll();
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getUsername() == "Unity1") {
+                return accounts.get(i).getId();
+            }
+        }
+        return 0;
     }
 }

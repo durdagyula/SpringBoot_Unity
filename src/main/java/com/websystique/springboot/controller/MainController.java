@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
-	@RequestMapping("/")
-	public String home(ModelMap modal) {
-		return "index";
-	}
+    @RequestMapping("/")
+    public String home(ModelMap modal) {
+        return "index";
+    }
 }
