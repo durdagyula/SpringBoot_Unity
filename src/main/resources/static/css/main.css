@@ -16,6 +16,7 @@
 }
 
 #login-overlay {
+    padding-top: 10%;
     min-height: 370px;
     min-width: 600px;
 }
@@ -65,4 +66,5 @@
 .card-media {
     background-color: #999999;
 }
+
 

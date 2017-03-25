@@ -33,6 +33,7 @@
 <script src="js/app.js"></script>
 <script src="js/controllers/main.controller.js"></script>
 <script src="js/controllers/login.controller.js"></script>
+<script src="js/controllers/register.controller.js"></script>
 <script src="js/directives/myPictures.directive.js"></script>
 <script src="js/directives/myPicturesLayout.directive.js"></script>
 </body>

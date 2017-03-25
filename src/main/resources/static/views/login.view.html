@@ -1,0 +1,39 @@
+<div id="login-overlay" class="modal-dialog" ng-controller="LoginController">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Login to AR Scanner</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="well">
+                        <form name="loginForm" id="loginForm" novalidate>
+                            <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && loginForm.username.$touched}">
+                                <label for="username" class="control-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" ng-model="username" required title="Please enter your username" placeholder="example@gmail.com">
+                                <p id="emailErrorMsg" ng-show="loginForm.username.$invalid && loginForm.username.$touched" class="help-block">Enter a username.</p>
+                                <span class="help-block"></span>
+                            </div>
+                            <div class="form-group" show-errors>
+                                <label for="password" class="control-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" ng-model="password" required title="Please enter your password">
+                                <span class="help-block"></span>
+                            </div>
+                            <button class="btn btn-success btn-block" ng-disabled="loginForm.$invalid" ng-click="login()">Login</button>
+                            <button class="btn btn-default btn-block" ng-click="reset()">Forgot password?</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="promo" class="col-xs-6">
+                    <p class="lead">Register now for <span class="text-success">FREE</span></p>
+                    <ul class="list-unstyled" style="line-height: 2">
+                        <li><span class="glyphicon glyphicon-ok text-success"></span> Save all your items</li>
+                        <li><span class="glyphicon glyphicon-ok text-success"></span> Browse from your Scans</li>
+                        <li><span class="glyphicon glyphicon-ok text-success"></span> Share your favorites</li>
+                    </ul>
+                    <button class="btn btn-info btn-block" ng-click="register()">Register now!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

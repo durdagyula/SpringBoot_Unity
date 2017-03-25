@@ -5,15 +5,34 @@ app.controller("LoginController", ["$scope", "$http", "$location", "$mdDialog", 
     $scope.username = "";
     $scope.password = "";
     var alert;
+    var errorMsg;
     $scope.showAlert = showAlert;
-    //$http.get("listAccounts").then(function (response) {
-    //    alert(response.data);
-    //});
 
+    $scope.login = function () {
+        $http.post("validate", {username: $scope.username, password: $scope.password}).then(function (response) {
+            if (response.data) {
+                $location.path("/main");
+            } else {
+                errorMsg = "Username or password is incorrect!"
+                $scope.showAlert();
+            }
+        }, function (response) {
+                errorMsg = "Something bad happened! Refresh page and try again!"
+                $scope.showAlert();
+        });
+    };
+
+    $scope.register = function () {
+        $mdDialog.show({
+            templateUrl: "./views/register.view.html"
+        })
+    }
+
+    //ALERT modal
     function showAlert() {
         alert = $mdDialog.alert({
             title: 'Error!',
-            textContent: 'Username or password is incorrect!',
+            textContent: errorMsg,
             ok: 'Close'
         });
 
@@ -22,20 +41,6 @@ app.controller("LoginController", ["$scope", "$http", "$location", "$mdDialog", 
             .finally(function () {
                 alert = undefined;
             });
-    };
-
-
-    $scope.login = function () {
-        $http.post("validate", {username: $scope.username, password: $scope.password}).then(function (response) {
-            if (response.data) {
-                $location.path("/main");
-            } else {
-                $scope.showAlert();
-            }
-
-
-        }, function (response) {
-        });
     };
 
 }]);

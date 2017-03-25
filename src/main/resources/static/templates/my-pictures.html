@@ -1,24 +1,3 @@
-<!--div ng-repeat="picture in pictures">
-    <md-card layout="row" class="md-card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">{{ picture.title }}</span>
-                <span class="md-subhead">{{ picture.uploadDate }}</span>
-                <md-card-actions layout="row" layout-align="start end">
-                    <md-button>Open</md-button>
-                </md-card-actions>
-            </md-card-title-text>
-            <md-card-title-media>
-                <div class="md-media-lg card-media">
-                    <a href="{{ picture.url }}" target="_blank" class="thumbnail">
-                        <img src="{{ picture.url }}">
-                    </a>
-                </div>
-            </md-card-title-media>
-        </md-card-title>
-    </md-card>
-</div-->
-
 <md-card>
     <img src="{{ picture.url }}" alt="{{ picture.title }}">
     <md-card-content>
