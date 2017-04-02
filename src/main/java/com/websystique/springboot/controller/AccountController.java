@@ -25,9 +25,16 @@ public class AccountController {
     }
 
     @RequestMapping(value = "createAccount", method = RequestMethod.POST)
-    public List<Account> createAccount(@RequestBody Account account) {
+    public boolean createAccount(@RequestBody Account account) {
+        List<Account> accounts = accountRepository.findAll();
+
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getUsername().toLowerCase().equals(account.getUsername().toLowerCase())) {
+                return false;
+            }
+        }
         accountRepository.save(account);
-        return accountRepository.findAll();
+        return true;
     }
 
     @RequestMapping(value = "validate", method = RequestMethod.POST)
