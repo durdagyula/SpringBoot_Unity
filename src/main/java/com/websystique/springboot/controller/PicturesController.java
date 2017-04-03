@@ -27,8 +27,15 @@ public class PicturesController {
     }
 
     @PostMapping("createPicture")
-    public void createPicture(Picture picture) {
+    public String createPicture(Picture picture) {
+        String result;
         picturesRepository.saveAndFlush(picture);
+        try {
+            result = resultsController.getResultForPicture(picture.getTitle());
+        }catch (Exception e){
+            return "Error";
+        }
+        return result;
     }
 
     @RequestMapping(value = "getUserPictures/{userId}", method = RequestMethod.POST)
