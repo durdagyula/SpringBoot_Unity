@@ -1,5 +1,6 @@
 package com.websystique.springboot.controller;
 
+import com.websystique.springboot.model.Picture;
 import com.websystique.springboot.model.Result;
 import com.websystique.springboot.persistence.ResultRepository;
 import org.json.JSONArray;
@@ -33,9 +34,8 @@ public class ResultsController {
     @RequestMapping(value = "listResults", method = RequestMethod.GET)
     public List<Result> listResults() { return resultRepository.findAll(); }
 
-    public String getResultForPicture(String wordToSearch) throws IOException {
-        //String searchURL = GOOGLE_SEARCH_URL + (URLEncoder.encode(picture.getTitle()));
-        String urlLink = GOOGLE_SEARCH_URL + wordToSearch;
+    public String getResultForPicture(Picture picture) throws IOException {
+        String urlLink = GOOGLE_SEARCH_URL + picture.getTitle();
         URL url = new URL(urlLink);
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("GET");
@@ -57,14 +57,19 @@ public class ResultsController {
 
         for (int i = 0; i < items.length(); i++){
             JSONObject item = items.getJSONObject(i);
-            String fasz = item.getString("formattedUrl");
             if (item.getString("formattedUrl").contains("wikipedia")){
                 wikiResult = item.getString("snippet");
                 break;
             }
         }
         in.close();
-        return wikiResult;
+
+        Result result = new Result();
+        result.setPictureId(picture.getId());
+        result.setResult(wikiResult);
+        resultRepository.saveAndFlush(result);
+
+        return result.getResult();
     }
 
 }

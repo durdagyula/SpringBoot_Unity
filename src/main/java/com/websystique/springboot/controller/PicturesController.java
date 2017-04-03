@@ -31,7 +31,7 @@ public class PicturesController {
         String result;
         picturesRepository.saveAndFlush(picture);
         try {
-            result = resultsController.getResultForPicture(picture.getTitle());
+            result = resultsController.getResultForPicture(picture);
         }catch (Exception e){
             return "Error";
         }
