@@ -26,7 +26,7 @@ app.controller("LoginController", ["$scope", "$http", "$location", "$mdDialog", 
         $mdDialog.show({
             templateUrl: "./views/register.view.html"
         })
-    }
+    };
 
     //ALERT modal
     function showAlert() {

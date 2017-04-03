@@ -1,11 +1,11 @@
-<md-card>
+<md-card ng-controller="MainController">
     <img src="{{ picture.url }}" alt="{{ picture.title }}">
     <md-card-content>
         <h2>{{ picture.title }}</h2>
         <p>{{ picture.uploadDate }}</p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
-        <md-button>
+        <md-button ng-click="getResult(picture.id)">
             Open
         </md-button>
     </md-card-actions>

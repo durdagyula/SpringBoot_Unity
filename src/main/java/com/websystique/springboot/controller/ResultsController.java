@@ -6,9 +6,7 @@ import com.websystique.springboot.persistence.ResultRepository;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -70,6 +68,17 @@ public class ResultsController {
         resultRepository.saveAndFlush(result);
 
         return result.getResult();
+    }
+
+    @PostMapping("getResultByPictureId")
+    public Result getResultByPictureId(@RequestBody long pictureId){
+        List<Result> results = resultRepository.findAll();
+        Result result = new Result();
+        for (int i = 0; i < results.size(); i++){
+            if(results.get(i).getPictureId() == pictureId) { result = results.get(i); }
+            break;
+        }
+        return result;
     }
 
 }
