@@ -71,4 +71,10 @@
     background-color: #999999;
 }
 
+.mainPage {
+    max-width: 80%;
+    margin: auto;
+    background-color: whitesmoke;
+}
+
 

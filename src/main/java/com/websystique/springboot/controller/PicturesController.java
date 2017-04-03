@@ -1,22 +1,20 @@
 package com.websystique.springboot.controller;
 
-import com.websystique.springboot.model.Account;
 import com.websystique.springboot.model.Picture;
-import com.websystique.springboot.persistence.AccountRepository;
 import com.websystique.springboot.persistence.PicturesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class PicturesController {
 
     @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
     private PicturesRepository picturesRepository;
+
+    private ResultsController resultsController;
 
     @Autowired
     public PicturesController(PicturesRepository picturesRepository) {
@@ -41,22 +39,14 @@ public class PicturesController {
     //get user pictures
     private List<Picture> getCurrentUserPictures(long userId) {
         List<Picture> lp = picturesRepository.findAll();
+        List<Picture> userPictures = new ArrayList<Picture>();
         for (int i = 0; i < lp.size(); i++) {
+            // !=  CHANGE TO ==
             if (lp.get(i).getUserId() != userId) {
-                lp.remove(i);
+                userPictures.add(lp.get(i));
             }
         }
-        return lp;
-    }
-
-    public long getTestUser() {
-        List<Account> accounts = accountRepository.findAll();
-        for (int i = 0; i < accounts.size(); i++) {
-            if (accounts.get(i).getUsername() == "Unity1") {
-                return accounts.get(i).getId();
-            }
-        }
-        return 0;
+        return userPictures;
     }
 
 }

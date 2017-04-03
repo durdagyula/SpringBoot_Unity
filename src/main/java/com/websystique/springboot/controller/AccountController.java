@@ -58,14 +58,14 @@ public class AccountController {
         CurrentUser = currentUser;
     }
 
-    @GetMapping("getTestUser")
-    public long getTestUser() {
-        List<Account> accounts = accountRepository.findAll();
-        for (int i = 0; i < accounts.size(); i++) {
-            if (accounts.get(i).getUsername() == "Unity1") {
-                return accounts.get(i).getId();
-            }
-        }
-        return 0;
-    }
+    //@GetMapping("getTestUser")
+    //public long getTestUser() {
+    //    List<Account> accounts = accountRepository.findAll();
+    //    for (int i = 0; i < accounts.size(); i++) {
+    //        if (accounts.get(i).getUsername() == "Unity1") {
+    //            return accounts.get(i).getId();
+    //        }
+    //    }
+    //    return 0;
+    //}
 }
