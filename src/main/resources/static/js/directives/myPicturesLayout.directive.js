@@ -8,7 +8,7 @@ app.directive("myPicturesLayout", ["$compile", function ($compile) {
                 if (newval.length > 0) {
                     var rowstart = "<div layout='row'>";
                     var rowend = "</div>";
-                    var picturetemplate = "<div my-pictures data-picture='item' md-whiteframe='3'></div>";
+                    var picturetemplate = "<div my-pictures data-picture='item'></div>";
                     var fullhtml = "";
                     fullhtml += rowstart;
                     for (var i = 0; i < scope.pictures.length; i++) {

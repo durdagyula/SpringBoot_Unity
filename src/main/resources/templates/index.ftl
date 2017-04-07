@@ -37,5 +37,6 @@
 <script src="js/controllers/register.controller.js"></script>
 <script src="js/directives/myPictures.directive.js"></script>
 <script src="js/directives/myPicturesLayout.directive.js"></script>
+<script src="js/filters/string.filter.js"></script>
 </body>
 </html>

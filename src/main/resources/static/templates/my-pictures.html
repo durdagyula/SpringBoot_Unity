@@ -1,15 +1,22 @@
-<md-card ng-controller="MainController">
+<md-card class="picture-container" ng-controller="MainController">
+
     <img src="{{ picture.url }}" alt="{{ picture.title }}">
-    <md-card-content>
-        <h2>{{ picture.title }}</h2>
-        <p>{{ picture.uploadDate }}</p>
-    </md-card-content>
-    <md-card-actions layout="row" >
-        <md-button layout-align="start center" ng-click="deletePicture(picture.id)">
-            Delete
+
+    <md-card-title>
+        <md-card-title-text>
+            <md-headline class="picture-title">
+                {{ picture.title }}
+                <md-tooltip md-direction="top" md-delay="500">{{ picture.title }}</md-tooltip>
+            </md-headline>
+            <md-subhead class="picture-date">{{ picture.uploadDate | slice:' ':0 }}</md-subhead>
+        </md-card-title-text>
+    </md-card-title>
+
+
+    <md-card-actions class="card-action" layout="row" layout-align="space-between end">
+        <md-button ng-click="deletePicture(picture.id)">
+            <span class="btn-delete">Delete</span>
         </md-button>
-        <md-button layout-align="end center" ng-click="getResult(picture.id)">
-            Open
-        </md-button>
+        <md-button ng-click="getResult(picture.id)"> Open </md-button>
     </md-card-actions>
 </md-card>

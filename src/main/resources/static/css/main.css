@@ -8,6 +8,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: whitesmoke;
     height: 250px;
 }
 
@@ -68,13 +69,45 @@
 }
 
 .card-media {
-    background-color: #999999;
+    background-color: whitesmoke;
 }
 
 .mainPage {
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
     background-color: whitesmoke;
+}
+
+.card-action {
+    alignment: center;
+    max-height: 25px;
+    margin-bottom: 5%;
+}
+
+.btn-delete {
+    color: darkred;
+}
+
+.picture-date {
+    padding:5px 5px 5px 5px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.picture-title {
+    padding:5px 5px 5px 5px;
+    white-space: nowrap;
+    width: 8em;
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.picture-card-content {
+    height: 75px;
+    width: auto;
+    text-overflow: ellipsis;
 }
 
 
