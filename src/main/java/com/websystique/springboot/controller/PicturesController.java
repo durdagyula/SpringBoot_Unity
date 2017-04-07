@@ -14,6 +14,7 @@ public class PicturesController {
     @Autowired
     private PicturesRepository picturesRepository;
 
+    @Autowired
     private ResultsController resultsController;
 
     @Autowired
@@ -43,13 +44,25 @@ public class PicturesController {
         return getCurrentUserPictures(userId);
     }
 
+    @PostMapping("deletePictureById")
+    public boolean deletePictureById(@RequestBody long pictureId){
+        boolean result;
+        try{
+            picturesRepository.delete(pictureId);
+            result = true;
+        }catch (Exception e){
+            result = false;
+        }
+        return result;
+    }
+
     //get user pictures
     private List<Picture> getCurrentUserPictures(long userId) {
         List<Picture> lp = picturesRepository.findAll();
         List<Picture> userPictures = new ArrayList<Picture>();
         for (int i = 0; i < lp.size(); i++) {
             // !=  CHANGE TO ==
-            if (lp.get(i).getUserId() != userId) {
+            if (lp.get(i).getUserId() == userId) {
                 userPictures.add(lp.get(i));
             }
         }

@@ -75,8 +75,10 @@ public class ResultsController {
         List<Result> results = resultRepository.findAll();
         Result result = new Result();
         for (int i = 0; i < results.size(); i++){
-            if(results.get(i).getPictureId() == pictureId) { result = results.get(i); }
-            break;
+            if(results.get(i).getPictureId() == pictureId) {
+                result = results.get(i);
+                break;
+            }
         }
         return result;
     }

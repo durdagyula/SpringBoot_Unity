@@ -1,6 +1,6 @@
 var app = angular.module("app");
 
-app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", function MainController($scope, $http, $location, $mdDialog) {
+app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "$route", function MainController($scope, $http, $location, $mdDialog, $route) {
 
     $scope.currentUser = null;
     $scope.pictures = [];
@@ -12,11 +12,7 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", f
             $location.path("/");
         } else {
             $scope.currentUser = response.data;
-            $http.post("getUserPictures/" + $scope.currentUser.id).then(function (response) {
-                if (response.data) {
-                    $scope.pictures = response.data;
-                }
-            })
+            getUserPicture();
         }
     });
 
@@ -33,6 +29,21 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", f
             }
 
         }, function (response) {
+            errorMsg = "Something bad happened! Refresh page and try again!"
+            $scope.showAlert();
+        })
+    };
+
+    $scope.deletePicture = function (id) {
+        $http.post("deletePictureById", id).then(function (response) {
+            if (response.data){
+                title = "Delete picture"
+                errorMsg = "The selected picture was deleted successfully!"
+                $scope.showAlert();
+                $route.reload();
+            }
+        }, function (response) {
+            title = "Error!"
             errorMsg = "Something bad happened! Refresh page and try again!"
             $scope.showAlert();
         })
@@ -64,6 +75,15 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", f
                 alert = undefined;
             });
     };
+
+    //get user pictures
+    function getUserPicture() {
+        $http.post("getUserPictures/" + $scope.currentUser.id).then(function (response) {
+            if (response.data) {
+                $scope.pictures = response.data;
+            }
+        })
+    }
 }]);
 
 app.config(function ($mdThemingProvider) {

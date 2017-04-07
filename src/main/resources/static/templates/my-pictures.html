@@ -4,8 +4,11 @@
         <h2>{{ picture.title }}</h2>
         <p>{{ picture.uploadDate }}</p>
     </md-card-content>
-    <md-card-actions layout="row" layout-align="end center">
-        <md-button ng-click="getResult(picture.id)">
+    <md-card-actions layout="row" >
+        <md-button layout-align="start center" ng-click="deletePicture(picture.id)">
+            Delete
+        </md-button>
+        <md-button layout-align="end center" ng-click="getResult(picture.id)">
             Open
         </md-button>
     </md-card-actions>
