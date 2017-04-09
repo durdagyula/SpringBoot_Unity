@@ -119,6 +119,8 @@
 }
 
 .gallery-container {
-    margin: 2% 2% 2% 2%;
+    margin: 0% 2% 0% 2%;
+    height: 500px;
+    overflow-scrolling: auto;
 }
 
