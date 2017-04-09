@@ -7,10 +7,10 @@ app.directive("innerPageLayout", ["$compile", function ($compile) {
             page: '='
         },
         link: function (scope, element) {
-            var elements = [".scanned-pictures",".translations",".favourites",".settings"];
+            var elements = [".scanned-pictures", ".translations", ".favourites", ".settings"];
 
             scope.$watch('page', function (newval) {
-                if (newval != null){
+                if (newval != null) {
                     switch (newval) {
                         case "scannedPictures":
                             clearContent();
@@ -71,9 +71,9 @@ app.directive("innerPageLayout", ["$compile", function ($compile) {
 
             //clear HTML contents
             clearContent = function () {
-                for (var i = 0; i < elements.length; i++){
-                    var e = angular.element( document.querySelectorAll(elements[i])).remove();
-                    $compile(e) (scope);
+                for (var i = 0; i < elements.length; i++) {
+                    var e = angular.element(document.querySelectorAll(elements[i])).remove();
+                    $compile(e)(scope);
                 }
             };
         }

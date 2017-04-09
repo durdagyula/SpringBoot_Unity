@@ -10,30 +10,31 @@
                 <!-- <div ng-messages="registerForm.userName.$error">
                      <div ng-message="required">This is required.</div>
                  </div> -->
-             </md-input-container>
+            </md-input-container>
 
-             <md-input-container class="md-block">
-                 <label>Email</label>
-                 <input required type="email" name="userEmail" ng-model="user.email"
-                        minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
-                 <!-- <div ng-messages="registerForm.userEmail.$error" role="alert" multiple md-auto-hide="true">
-                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                         Your email must be between 10 and 100 characters long and should be a valid email address.
-                     </div>
-                 </div> -->
+            <md-input-container class="md-block">
+                <label>Email</label>
+                <input required type="email" name="userEmail" ng-model="user.email"
+                       minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"/>
+                <!-- <div ng-messages="registerForm.userEmail.$error" role="alert" multiple md-auto-hide="true">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Your email must be between 10 and 100 characters long and should be a valid email address.
+                    </div>
+                </div> -->
             </md-input-container>
 
             <md-input-container class="md-block">
                 <label>Password</label>
                 <input type="password" required name="userPassword" ng-model="user.password" minlength="8"/>
-               <!-- <div ng-messages="registerForm.userPassword.$error" multiple md-auto-hide="true">
-                    <div ng-message="minlenght">The password should be more than 8 chars.</div>
-                </div> -->
+                <!-- <div ng-messages="registerForm.userPassword.$error" multiple md-auto-hide="true">
+                     <div ng-message="minlenght">The password should be more than 8 chars.</div>
+                 </div> -->
             </md-input-container>
 
         </form>
         <div>
-            <button class="btn btn-info btn-block" ng-disabled="registerForm.$invalid" ng-click="submit()">Submit</button>
+            <button class="btn btn-info btn-block" ng-disabled="registerForm.$invalid" ng-click="submit()">Submit
+            </button>
             <button class="btn btn-default btn-block" ng-click="close()">Close</button>
         </div>
     </div>

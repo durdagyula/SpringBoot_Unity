@@ -17,8 +17,8 @@ app.controller("LoginController", ["$scope", "$http", "$location", "$mdDialog", 
                 $scope.showAlert();
             }
         }, function (response) {
-                errorMsg = "Something bad happened! Refresh page and try again!"
-                $scope.showAlert();
+            errorMsg = "Something bad happened! Refresh page and try again!"
+            $scope.showAlert();
         });
     };
 

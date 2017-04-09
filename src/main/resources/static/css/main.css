@@ -16,7 +16,7 @@
     vertical-align: middle;
 }
 
-#registerForm{
+#registerForm {
     min-width: 300px;
 }
 
@@ -89,14 +89,14 @@
 }
 
 .picture-date {
-    padding:5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
     font-size: 12px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
 .picture-title {
-    padding:5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
     white-space: nowrap;
     width: 8em;
     font-size: 20px;

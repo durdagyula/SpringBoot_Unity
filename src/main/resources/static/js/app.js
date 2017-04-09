@@ -11,7 +11,7 @@ app.config(function ($routeProvider) {
         .when("/login", {
             templateUrl: "views/login.view.html"
         })
-        .when("/register",{
+        .when("/register", {
             templateUrl: "views/register.view.html"
         })
 });

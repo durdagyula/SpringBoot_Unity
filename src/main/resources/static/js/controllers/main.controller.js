@@ -19,10 +19,10 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
 
     $scope.getResult = function (id) {
         $http.post("getResultByPictureId", id).then(function (response) {
-            if (response.data.result){
+            if (response.data.result) {
                 $scope.selectedResult = response.data;
                 $mdDialog.show({
-                    locals:{selectedResult: $scope.selectedResult},
+                    locals: {selectedResult: $scope.selectedResult},
                     clickOutsideToClose: true,
                     templateUrl: "./templates/selected-picture.html",
                     controller: DialogCtrl
@@ -37,7 +37,7 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
 
     $scope.deletePicture = function (id) {
         $http.post("deletePictureById", id).then(function (response) {
-            if (response.data){
+            if (response.data) {
                 title = "Delete picture"
                 errorMsg = "The selected picture was deleted successfully!"
                 $scope.showAlert();
