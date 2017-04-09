@@ -32,8 +32,8 @@ public class AccountController {
         return true;
     }
 
-    @RequestMapping(value = "validate", method = RequestMethod.POST)
-    public long validate(@RequestBody Account account) {
+    @PostMapping("getUserId")
+    public long getUserId(Account account) {
         List<Account> accounts = accountRepository.findAll();
         for (int i = 0; i < accounts.size(); i++) {
             if (accounts.get(i).getUsername().equals(account.getUsername()) && accounts.get(i).getPassword().equals(account.getPassword())) {
@@ -42,6 +42,18 @@ public class AccountController {
             }
         }
         return 0;
+    }
+
+    @RequestMapping(value = "validate", method = RequestMethod.POST)
+    public boolean validate(@RequestBody Account account) {
+        List<Account> accounts = accountRepository.findAll();
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getUsername().equals(account.getUsername()) && accounts.get(i).getPassword().equals(account.getPassword())) {
+                this.setCurrentUser(accounts.get(i));
+                return true;
+            }
+        }
+        return false;
     }
 
     @RequestMapping(value = "getCurrentUser", method = RequestMethod.GET)
