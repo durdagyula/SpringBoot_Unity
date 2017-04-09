@@ -3,33 +3,33 @@
         <div class="container"></div>
     </div>
 
-    <div class="gallery-container">
-        <div class="row">
-            <div class="left-container" align="center">
-                <div class="col-xs-12 col-sm-3">
-                    <h3>Menu</h3>
-                    <div class="list-group">
-                        <span href="#" class="list-group-item active">
-                            Scanned pictures
-                        </span>
-                        <a href="#" class="list-group-item">
-                            Translations
-                        </a>
-                        <a href="#" class="list-group-item">
-                            Favourites
-                        </a>
-                        <a href="#" class="list-group-item">
-                            Settings
-                        </a>
+    <md-content class="md-padding">
+        <md-nav-bar
+                md-selected-nav-item="currentNavItem"
+                nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-click="changeInnerPage('scannedPictures')" name="scannedPictures">
+                Scanned pictures
+            </md-nav-item>
+            <md-nav-item md-nav-click="changeInnerPage('translations')" name="translations">
+                Translations
+            </md-nav-item>
+            <md-nav-item md-nav-click="changeInnerPage('favourites')" name="favourites">
+                Favourites
+            </md-nav-item>
+            <md-nav-item md-nav-click="changeInnerPage('settings')" name="settings">
+                Settings
+            </md-nav-item>
+        </md-nav-bar>
+
+        <div class="gallery-container">
+            <div class="row">
+                <div layout="column">
+                    <div>
+                        <div inner-page-layout data-pictures='pictures' data-page='page'></div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-xs-12 col-sm-9">
-                <div layout="column">
-                    <div my-pictures-layout data-pictures="pictures"></div>
-                </div>
-            </div>
         </div>
-    </div>
+
+    </md-content>
 </div>

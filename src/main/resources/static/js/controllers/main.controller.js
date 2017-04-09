@@ -4,6 +4,7 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
 
     $scope.currentUser = null;
     $scope.pictures = [];
+    $scope.page = null;
     $scope.showAlert = showAlert;
     $scope.selectedResult = null;
 
@@ -49,6 +50,21 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
         })
     };
 
+
+    //get user
+    function getUserPicture() {
+        $http.post("getUserPictures/" + $scope.currentUser.id).then(function (response) {
+            if (response.data) {
+                $scope.pictures = response.data;
+                $scope.page = "scannedPictures";
+            }
+        })
+    };
+
+    $scope.changeInnerPage = function (innerpage) {
+        $scope.page = innerpage;
+    }
+
     //share scope selectedResult with the modal!
     function DialogCtrl($scope, $mdDialog, selectedResult) {
         $scope.selectedResult = selectedResult;
@@ -58,8 +74,6 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
             $mdDialog.hide();
         };
     }
-
-
 
     //ALERT modal
     function showAlert() {
@@ -76,14 +90,6 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
             });
     };
 
-    //get user pictures
-    function getUserPicture() {
-        $http.post("getUserPictures/" + $scope.currentUser.id).then(function (response) {
-            if (response.data) {
-                $scope.pictures = response.data;
-            }
-        })
-    }
 }]);
 
 app.config(function ($mdThemingProvider) {

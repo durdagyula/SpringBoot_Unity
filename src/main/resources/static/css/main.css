@@ -110,4 +110,15 @@
     text-overflow: ellipsis;
 }
 
+.left-container {
+    margin-left: 20px;
+}
+
+.md-padding {
+    background-color: whitesmoke;
+}
+
+.gallery-container {
+    margin: 2% 2% 2% 2%;
+}
 
