@@ -7,6 +7,7 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
     $scope.page = null;
     $scope.showAlert = showAlert;
     $scope.selectedResult = null;
+    $scope.theme;
 
     $http.get("getCurrentUser").then(function (response) {
         if (!response.data) {
@@ -91,10 +92,3 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
     };
 
 }]);
-
-app.config(function ($mdThemingProvider) {
-    $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
-    $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
-    $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
-    $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
-});

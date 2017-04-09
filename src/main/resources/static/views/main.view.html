@@ -4,22 +4,33 @@
     </div>
 
     <md-content class="md-padding">
-        <md-nav-bar
-                md-selected-nav-item="currentNavItem"
-                nav-bar-aria-label="navigation links">
-            <md-nav-item md-nav-click="changeInnerPage('scannedPictures')" name="scannedPictures">
-                Scanned pictures
-            </md-nav-item>
-            <md-nav-item md-nav-click="changeInnerPage('translations')" name="translations">
-                Translations
-            </md-nav-item>
-            <md-nav-item md-nav-click="changeInnerPage('favourites')" name="favourites">
-                Favourites
-            </md-nav-item>
-            <md-nav-item md-nav-click="changeInnerPage('settings')" name="settings">
-                Settings
-            </md-nav-item>
-        </md-nav-bar>
+        <div layout="row">
+            <div class="menu" flex="80">
+                <md-nav-bar
+                        md-selected-nav-item="currentNavItem"
+                        nav-bar-aria-label="navigation links">
+                    <md-nav-item md-nav-click="changeInnerPage('scannedPictures')" name="scannedPictures">
+                        Scanned pictures
+                    </md-nav-item>
+                    <md-nav-item md-nav-click="changeInnerPage('translations')" name="translations">
+                        Translations
+                    </md-nav-item>
+                    <md-nav-item md-nav-click="changeInnerPage('favourites')" name="favourites">
+                        Favourites
+                    </md-nav-item>
+                    <md-nav-item md-nav-click="changeInnerPage('settings')" name="settings">
+                        Settings
+                    </md-nav-item>
+                </md-nav-bar>
+            </div>
+            <div class="theme-changer" flex="20" layout-align="end end">
+                <md-checkbox ng-model="theme">
+                    <span class="theme-changer-text">Use 'Dark' Themed Cards</span>
+                </md-checkbox>
+            </div>
+        </div>
+
+
     </md-content>
 
     <md-content class="md-padding">
@@ -27,7 +38,7 @@
             <div class="row">
                 <div layout="column">
                     <div>
-                        <div inner-page-layout data-pictures='pictures' data-page='page'></div>
+                        <div inner-page-layout data-pictures='pictures' data-page='page' data-show-dark-theme='theme'></div>
                     </div>
                 </div>
             </div>

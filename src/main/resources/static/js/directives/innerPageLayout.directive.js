@@ -36,7 +36,7 @@ app.directive("innerPageLayout", ["$compile", function ($compile) {
             buildScannedPictures = function () {
                 var rowstart = "<div class='scanned-pictures' layout='row'>";
                 var rowend = "</div>";
-                var picturetemplate = "<div my-pictures data-picture='item'></div>";
+                var picturetemplate = "<div my-pictures data-picture='item' data-theme='theme'></div>";
                 var fullhtml = "";
                 fullhtml += rowstart;
                 for (var i = 0; i < scope.pictures.length; i++) {
