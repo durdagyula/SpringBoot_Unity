@@ -31,7 +31,7 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
             }
 
         }, function (response) {
-            errorMsg = "Something bad happened! Refresh page and try again!"
+            errorMsg = "Something bad happened! Refresh page and try again!";
             $scope.showAlert();
         })
     };
@@ -39,14 +39,14 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
     $scope.deletePicture = function (id) {
         $http.post("deletePictureById", id).then(function (response) {
             if (response.data) {
-                title = "Delete picture"
-                errorMsg = "The selected picture was deleted successfully!"
+                title = "Delete picture";
+                errorMsg = "The selected picture was deleted successfully!";
                 $scope.showAlert();
                 $route.reload();
             }
         }, function (response) {
-            title = "Error!"
-            errorMsg = "Something bad happened! Refresh page and try again!"
+            title = "Error!";
+            errorMsg = "Something bad happened! Refresh page and try again!";
             $scope.showAlert();
         })
     };

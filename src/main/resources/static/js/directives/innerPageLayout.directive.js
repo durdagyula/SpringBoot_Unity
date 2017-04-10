@@ -4,7 +4,8 @@ app.directive("innerPageLayout", ["$compile", function ($compile) {
     return {
         scope: {
             pictures: '=',
-            page: '='
+            page: '=',
+            theme: '='
         },
         link: function (scope, element) {
             var elements = [".scanned-pictures", ".translations", ".favourites", ".settings"];

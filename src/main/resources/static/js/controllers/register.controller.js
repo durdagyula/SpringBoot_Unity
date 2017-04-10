@@ -17,14 +17,17 @@ app.controller("RegisterCtrl", ["$scope", "$http", "$mdDialog", function Registe
     $scope.submit = function () {
         $http.post("createAccount", {username: $scope.user.name, password: $scope.user.password, email: $scope.user.email}).then(function (response) {
             if (response.data) {
-                errorMsg = "Success!"
+                title = "Register";
+                errorMsg = "Success!";
                 $scope.showAlert();
             } else {
-                errorMsg = "Username is in use!"
+                title = "Error!";
+                errorMsg = "Username is in use!";
                 $scope.showAlert();
             }
         }, function (response) {
-            errorMsg = "Something bad happened! Refresh page and try again!"
+            title = "Error!";
+            errorMsg = "Something bad happened! Refresh page and try again!";
             $scope.showAlert();
         });
     };
@@ -32,7 +35,7 @@ app.controller("RegisterCtrl", ["$scope", "$http", "$mdDialog", function Registe
     //ALERT modal
     function showAlert() {
         alert = $mdDialog.alert({
-            title: 'Error!',
+            title: title,
             textContent: errorMsg,
             ok: 'Close'
         });
