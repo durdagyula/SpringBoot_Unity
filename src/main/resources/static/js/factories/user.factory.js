@@ -1,18 +1,22 @@
 var app = angular.module("app");
 
-app.factory('userFactory', ["$http", "$cookies", "$location", function ($http, $cookies, $location) {
+app.factory('userFactory', ["$q", "$http", "$cookies", "$location", function ($q, $http, $cookies, $location) {
 
     var userFactory = {};
 
     userFactory.login = function (username, password) {
-        var isAuth = false;
+        var q = $q.defer();
+
         $http.post("validate", {username: username, password: password}).then(function (response) {
             if (response.data) {
                 $cookies.put("auth", response);
                 $location.path("/main");
-                isAuth = true;
-            } else {}}, function (response) {});
-        return isAuth;
+                q.resolve(true);
+            } else {
+                q.resolve(false);
+            }
+        });
+        return q.promise;
     };
 
     userFactory.getAuthStatus = function () {

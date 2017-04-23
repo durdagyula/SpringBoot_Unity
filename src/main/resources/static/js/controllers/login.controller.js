@@ -9,7 +9,13 @@ app.controller("LoginController", ["$http", "$scope", "$mdDialog", 'userFactory'
     $scope.showAlert = showAlert;
 
     $scope.login = function () {
-            userFactory.login($scope.username, $scope.password);
+        var promise = userFactory.login($scope.username, $scope.password);
+        promise.then(function (response) {
+            if (!response){
+                errorMsg = "Username or password is incorrect!";
+                $scope.showAlert();
+            }
+        })
             //if (!data){
             //    errorMsg = "Username or password is incorrect!";
             //    $scope.showAlert();
