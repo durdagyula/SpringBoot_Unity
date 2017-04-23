@@ -1,6 +1,6 @@
 var app = angular.module("app");
 
-app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "$route", function MainController($scope, $http, $location, $mdDialog, $route) {
+app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "$route", "userFactory", function MainController($scope, $http, $location, $mdDialog, $route, userFactory) {
 
     $scope.currentUser = null;
     $scope.pictures = [];
@@ -64,7 +64,11 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
 
     $scope.changeInnerPage = function (innerpage) {
         $scope.page = innerpage;
-    }
+    };
+
+    $scope.logout = function () {
+        userFactory.logout();
+    };
 
     //share scope selectedResult with the modal!
     function DialogCtrl($scope, $mdDialog, selectedResult) {

@@ -1,6 +1,6 @@
 var app = angular.module("app");
 
-app.controller("LoginController", ["$scope", "$http", "$location", "$mdDialog", function LoginController($scope, $http, $location, $mdDialog) {
+app.controller("LoginController", ["$http", "$scope", "$mdDialog", 'userFactory', function LoginController($http, $scope, $mdDialog, userFactory) {
 
     $scope.username = "";
     $scope.password = "";
@@ -9,19 +9,13 @@ app.controller("LoginController", ["$scope", "$http", "$location", "$mdDialog", 
     $scope.showAlert = showAlert;
 
     $scope.login = function () {
-        $http.post("validate", {username: $scope.username, password: $scope.password}).then(function (response) {
-            if (response.data) {
-                $location.path("/main");
-            } else {
-                errorMsg = "Username or password is incorrect!"
-                $scope.showAlert();
-            }
-        }, function (response) {
-            errorMsg = "Something bad happened! Refresh page and try again!"
-            $scope.showAlert();
-        });
+            userFactory.login($scope.username, $scope.password);
+            //if (!data){
+            //    errorMsg = "Username or password is incorrect!";
+            //    $scope.showAlert();
+            //}
     };
-
+    
     $scope.register = function () {
         $mdDialog.show({
             templateUrl: "./views/register.view.html"
@@ -41,6 +35,7 @@ app.controller("LoginController", ["$scope", "$http", "$location", "$mdDialog", 
             .finally(function () {
                 alert = undefined;
             });
-    };
+    }
+
 
 }]);

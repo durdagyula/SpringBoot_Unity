@@ -71,4 +71,9 @@ public class AccountController {
         return accountRepository.findAll();
     }
 
+    @RequestMapping("/api/getUser") String getUser(){
+        return "{\"users\":[{\"firstname\":\"Richard\", \"lastname\":\"Feynman\"}," +
+                "{\"firstname\":\"Marie\",\"lastname\":\"Curie\"}]}";
+    }
+
 }

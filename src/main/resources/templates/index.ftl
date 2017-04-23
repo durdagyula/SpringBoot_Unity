@@ -30,7 +30,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-messages.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-messages.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-cookies.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers/main.controller.js"></script>
 <script src="js/controllers/login.controller.js"></script>
@@ -38,5 +38,6 @@
 <script src="js/directives/myPictures.directive.js"></script>
 <script src="js/directives/innerPageLayout.directive.js"></script>
 <script src="js/filters/string.filter.js"></script>
+<script src="js/factories/user.factory.js"></script>
 </body>
 </html>
