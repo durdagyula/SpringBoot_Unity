@@ -16,10 +16,6 @@ app.controller("LoginController", ["$http", "$scope", "$mdDialog", 'userFactory'
                 $scope.showAlert();
             }
         })
-            //if (!data){
-            //    errorMsg = "Username or password is incorrect!";
-            //    $scope.showAlert();
-            //}
     };
     
     $scope.register = function () {
