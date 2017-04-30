@@ -1,6 +1,7 @@
 package com.springboot.controller;
 
 import com.springboot.model.Picture;
+import com.springboot.model.Result;
 import com.springboot.persistence.PicturesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +24,13 @@ public class PicturesController {
     }
 
     @PostMapping("createPicture")
-    public String createPicture(Picture picture) {
-        String result;
+    public Result createPicture(Picture picture) {
+        Result result;
         picturesRepository.saveAndFlush(picture);
         try {
             result = resultsController.getResultForPicture(picture);
         }catch (Exception e){
-            return "Error";
+            return null;
         }
         return result;
     }

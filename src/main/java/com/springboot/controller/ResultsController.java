@@ -47,7 +47,7 @@ public class ResultsController {
         return result;
     }
 
-    public String getResultForPicture(Picture picture) throws IOException {
+    public Result getResultForPicture(Picture picture) throws IOException {
         String urlLink = GOOGLE_SEARCH_URL + picture.getTitle();
         URL url = new URL(urlLink);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -67,10 +67,12 @@ public class ResultsController {
         JSONArray items = myObject.getJSONArray("items");
 
         String wikiResult = "";
+        String wikiUrl = "";
 
         for (int i = 0; i < items.length(); i++) {
             JSONObject item = items.getJSONObject(i);
             if (item.getString("formattedUrl").contains("wikipedia")) {
+                wikiUrl = item.getString("formattedUrl");
                 wikiResult = item.getString("snippet");
                 break;
             }
@@ -79,6 +81,7 @@ public class ResultsController {
         //if there is no wikipedia link we should use the first google first "hit"
         if (wikiResult == "") {
             JSONObject item = items.getJSONObject(0);
+            wikiUrl = item.getString("formattedUrl");
             wikiResult = item.getString("snippet");
         }
 
@@ -87,9 +90,10 @@ public class ResultsController {
         Result result = new Result();
         result.setPictureId(picture.getId());
         result.setResult(wikiResult);
+        result.setURL(wikiUrl);
         resultRepository.saveAndFlush(result);
 
-        return result.getResult();
+        return result;
     }
 
 }

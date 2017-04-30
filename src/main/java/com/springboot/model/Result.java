@@ -14,6 +14,7 @@ public class Result {
     private long Id;
     private long PictureId;
     private String Result;
+    private String URL;
 
     public Result() {
     }
@@ -43,4 +44,7 @@ public class Result {
         Result = result;
     }
 
+    public String getURL() { return URL; }
+
+    public void setURL(String URL) { this.URL = URL; }
 }

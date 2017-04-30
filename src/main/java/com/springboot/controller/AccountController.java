@@ -44,6 +44,19 @@ public class AccountController {
         return 0;
     }
 
+    @PostMapping("registerUser")
+    public String registerUser(Account account){
+        List<Account> accounts = accountRepository.findAll();
+
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getUsername().toLowerCase().equals(account.getUsername().toLowerCase())) {
+                return "invalid";
+            }
+        }
+        accountRepository.save(account);
+        return "valid";
+    }
+
     @RequestMapping(value = "validate", method = RequestMethod.POST)
     public boolean validate(@RequestBody Account account) {
         List<Account> accounts = accountRepository.findAll();
