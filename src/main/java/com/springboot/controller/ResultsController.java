@@ -3,16 +3,19 @@ package com.springboot.controller;
 import com.springboot.model.Picture;
 import com.springboot.model.Result;
 import com.springboot.persistence.ResultRepository;
+import jdk.nashorn.internal.runtime.URIUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.net.util.URLUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.List;
 
 @RestController
@@ -49,6 +52,7 @@ public class ResultsController {
 
     public Result getResultForPicture(Picture picture) throws IOException {
         String urlLink = GOOGLE_SEARCH_URL + picture.getTitle();
+        urlLink = URLEncoder.encode(urlLink, "UTF-8").replace("+", "%20");
         URL url = new URL(urlLink);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
