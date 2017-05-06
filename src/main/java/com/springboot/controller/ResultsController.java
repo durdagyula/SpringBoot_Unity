@@ -51,9 +51,12 @@ public class ResultsController {
     }
 
     public Result getResultForPicture(Picture picture) throws IOException {
-        String urlLink = GOOGLE_SEARCH_URL + picture.getTitle();
-        urlLink = URLEncoder.encode(urlLink, "UTF-8").replace("+", "%20");
-        URL url = new URL(urlLink);
+        URL domain = new URL("https://www.googleapis.com");
+        String urlApiKeyAndKey = "/customsearch/v1?key=" + GOOGLE_API_KEY + "&cref&q=";
+        urlApiKeyAndKey += URLEncoder.encode(picture.getTitle(),"UTF-8");
+
+        URL url = new URL(domain,urlApiKeyAndKey);
+
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
 
@@ -83,7 +86,7 @@ public class ResultsController {
         }
 
         //if there is no wikipedia link we should use the first google first "hit"
-        if (wikiResult == "") {
+        if (wikiResult.equals("")) {
             JSONObject item = items.getJSONObject(0);
             wikiUrl = item.getString("formattedUrl");
             wikiResult = item.getString("snippet");
