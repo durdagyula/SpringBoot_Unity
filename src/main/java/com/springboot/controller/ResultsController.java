@@ -21,7 +21,8 @@ import java.util.List;
 @RestController
 public class ResultsController {
 
-    private static final String GOOGLE_API_KEY = "AIzaSyA2trjftijTLkh1IVQf7SWfi1ccQvV8jdw";
+    private static final String GOOGLE_API_KEY = "AIzaSyCcnXRMWdnoePN3TlmgAMq1lrlIymp73WI";
+    private static final String cx = "006216203397688045325:d2vpdx0cibu";
     private static final String GOOGLE_SEARCH_URL = "https://www.googleapis.com/customsearch/v1?key=" + GOOGLE_API_KEY + "&cref&q=";
 
     @Autowired
@@ -52,7 +53,7 @@ public class ResultsController {
 
     public Result getResultForPicture(Picture picture) throws IOException {
         URL domain = new URL("https://www.googleapis.com");
-        String urlApiKeyAndKey = "/customsearch/v1?key=" + GOOGLE_API_KEY + "&cref&q=";
+        String urlApiKeyAndKey = "/customsearch/v1?key=" + GOOGLE_API_KEY + "&cx=" + cx +  "&q=";
         urlApiKeyAndKey += URLEncoder.encode(picture.getTitle(),"UTF-8");
 
         URL url = new URL(domain,urlApiKeyAndKey);
