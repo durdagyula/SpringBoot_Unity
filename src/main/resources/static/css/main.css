@@ -124,3 +124,26 @@
     overflow-scrolling: auto;
 }
 
+.validate {
+    color: #9f0000;
+}
+
+.confirm-button{
+    width: 100px;
+}
+
+.settings-table{
+    width: 20%;
+}
+
+#currentPassword{
+    margin-bottom: 10px;
+}
+
+#newPassword1{
+    margin-bottom: 10px;
+}
+
+#newPassword2{
+    margin-bottom: 10px;
+}

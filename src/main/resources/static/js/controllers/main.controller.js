@@ -6,7 +6,9 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
     $scope.pictures = [];
     $scope.page = null;
     $scope.showAlert = showAlert;
+    $scope.showConfirm = showConfirm;
     $scope.selectedResult = null;
+    $scope.sure = null;
     $scope.theme;
 
     $http.get("getCurrentUser").then(function (response) {
@@ -82,8 +84,8 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
 
     //ALERT modal
     function showAlert() {
-        alert = $mdDialog.alert({
-            title: 'Error!',
+        var alert = $mdDialog.alert({
+            title: title,
             textContent: errorMsg,
             ok: 'Close'
         });
@@ -93,6 +95,21 @@ app.controller("MainController", ["$scope", "$http", "$location", "$mdDialog", "
             .finally(function () {
                 alert = undefined;
             });
+    };
+
+    //CONFIRM
+    function showConfirm(id) {
+        var confirm = $mdDialog.confirm()
+            .title('Would you like to delete your picture?')
+            .ok('Yes!')
+            .cancel('No');
+
+        $mdDialog.show(confirm).then(function() {
+            $scope.sure = true;
+            $scope.deletePicture(id);
+        }, function() {
+            $scope.sure = false;
+        });
     };
 
 }]);

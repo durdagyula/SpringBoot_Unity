@@ -2,6 +2,8 @@ package com.springboot.controller;
 
 import com.springboot.model.Account;
 import com.springboot.persistence.AccountRepository;
+import jdk.nashorn.internal.parser.JSONParser;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -71,10 +73,26 @@ public class AccountController {
 
     @RequestMapping(value = "getCurrentUser", method = RequestMethod.GET)
     public Account getCurrentUser() {
-        return CurrentUser;
+        Account ac = CurrentUser;
+        ac.setPassword("DefinitelyNotThePasswordYouAreLookingForMUHAHAHA");
+        return ac;
     }
 
-    public void setCurrentUser(Account currentUser) {
+    @PostMapping("changeUserPassword")
+    public boolean changeUserPassword(@RequestBody String passwords) {
+        JSONObject jsonObject = new JSONObject(passwords);
+        String curpsw = jsonObject.getString("current");
+        String newpsw = jsonObject.getString("new");
+        long id = jsonObject.getLong("id");
+        Account ac = accountRepository.findOne(id);
+        if(ac.getPassword().equals(curpsw)){
+            ac.setPassword(newpsw);
+            accountRepository.saveAndFlush(ac);
+        }
+        return (ac.getPassword().equals(newpsw));
+    }
+
+    private void setCurrentUser(Account currentUser) {
         CurrentUser = currentUser;
     }
 

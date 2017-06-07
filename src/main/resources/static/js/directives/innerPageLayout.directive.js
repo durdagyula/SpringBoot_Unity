@@ -65,7 +65,7 @@ app.directive("innerPageLayout", ["$compile", function ($compile) {
 
             //build settings HTML
             buildSettings = function () {
-                var fullhtml = "<div class='settings'> settings </div>";
+                var fullhtml = "<div my-settings class='settings'></div>";
                 var e = angular.element(fullhtml).appendTo(element);
                 $compile(e)(scope);
             };
